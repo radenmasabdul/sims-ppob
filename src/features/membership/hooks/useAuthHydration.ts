@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import type { AppDispatch } from "@/stores";
 import { hydrateAuth, finishHydration, logout } from "../stores/auth.store";
+import { isTokenExpired } from "@/lib/utils";
 
 interface StoreAuth {
   token: string;
@@ -27,11 +28,14 @@ export function useAuthHydration() {
         return;
       }
 
-      dispatch(
-        hydrateAuth({
-          token: parsed.token,
-        }),
-      );
+      if (isTokenExpired(parsed.token)) {
+        dispatch(logout());
+        dispatch(finishHydration());
+        return;
+      }
+
+      dispatch(hydrateAuth({ token: parsed.token }));
+      dispatch(finishHydration());
     } catch (error) {
       console.error("Failed to parse auth:", error);
       dispatch(logout());

@@ -64,7 +64,7 @@ export default function AppHeader({
             <button
               type="button"
               onClick={() => setShowBalance((prev) => !prev)}
-              className="-ml-2 mt-6 flex w-fit items-center gap-2 rounded-full bg-white/10 px-3 py-1.5 text-sm text-white backdrop-blur-sm transition hover:bg-white/20 cursor-pointer"
+              className="-ml-4 mt-6 flex w-fit items-center gap-2 rounded-full bg-white/10 px-3 py-1.5 text-sm text-white backdrop-blur-sm transition hover:bg-white/20 cursor-pointer"
             >
               {showBalance ? <EyeOff size={16} /> : <Eye size={16} />}
 

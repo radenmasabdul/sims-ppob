@@ -1,12 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import alertReducer from "@/stores/alert";
 import authReducer from "@/features/membership/stores/auth.store";
+import transactionReducer from "@/features/transaction/stores/transaction.store";
 import { baseApi } from "@/services/baseApi";
 
 export const store = configureStore({
   reducer: {
     alert: alertReducer,
     auth: authReducer,
+    transaction: transactionReducer,
     [baseApi.reducerPath]: baseApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>

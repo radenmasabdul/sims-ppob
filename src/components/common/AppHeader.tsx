@@ -24,7 +24,7 @@ export default function AppHeader({
       <div className="flex flex-1 flex-col items-center text-center lg:items-start lg:text-left">
         <div className="h-20 w-20 overflow-hidden rounded-full border-2 border-gray-100 shadow-sm md:h-24 md:w-24">
           <img
-            src={profileImage || foto}
+            src={profileImage?.includes("/null") ? foto : profileImage || foto}
             alt="Avatar"
             className="h-full w-full object-cover"
           />

@@ -28,7 +28,7 @@ export default function TopupPage() {
     data-[selected=true]:text-white data-[selected=true]:border-red-500 hover:border-red-400 hover:text-red-500 cursor-pointer`;
 
   return (
-    <div className="min-h-screen bg-white">
+    <>
       <AppHeader
         fullName={fullName}
         balance={balance}
@@ -96,6 +96,6 @@ export default function TopupPage() {
           </div>
         </div>
       </main>
-    </div>
+    </>
   );
 }

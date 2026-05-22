@@ -5,6 +5,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import AppLayout from "@/components/layout/AppLayout";
 import Home from "@/pages/home/Home";
 import TopupPage from "@/pages/transaction/TopUpPage";
+import TransactionPage from "@/pages/transaction/TransactionPage";
 import NotFound from "@/pages/NotFound";
 
 export default function AppRouter() {
@@ -18,6 +19,7 @@ export default function AppRouter() {
           <Route element={<AppLayout />}>
             <Route path="/home" element={<Home />} />
             <Route path="/topup" element={<TopupPage />} />
+            <Route path="/transaction" element={<TransactionPage />} />
           </Route>
         </Route>
 

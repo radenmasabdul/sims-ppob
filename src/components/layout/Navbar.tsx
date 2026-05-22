@@ -4,7 +4,7 @@ import logo from "@/assets/logo.png";
 
 const navLinks = [
   { label: "Top Up", href: "/topup" },
-  { label: "Transaction", href: "#" },
+  { label: "Transaction", href: "/transaction" },
   { label: "Akun", href: "#" },
 ];
 

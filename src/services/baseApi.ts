@@ -5,7 +5,6 @@ export const baseApi = createApi({
 
   baseQuery: fetchBaseQuery({
     baseUrl: import.meta.env.VITE_API_BASE_URL,
-
     prepareHeaders: (headers) => {
       const stored = localStorage.getItem("auth");
 
@@ -22,8 +21,7 @@ export const baseApi = createApi({
       return headers;
     },
   }),
-
+  keepUnusedDataFor: 300,
   tagTypes: ["Profile", "Banner", "Service", "Balance", "Transaction", "History"],
-
   endpoints: () => ({}),
 });

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useHome } from "@/features/membership/hooks/useHome";
 
 export default function Home() {
-  const { profile, balance, banners, services, isLoading, fullName, SERVICE_BG_COLORS, handleServiceClick } = useHome();
+  const { banners, services, isLoading, SERVICE_BG_COLORS, handleServiceClick } = useHome();
   
   if (isLoading) {
     return (
@@ -19,11 +19,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       <div className="mx-auto max-w-6xl px-4 py-6 md:px-6 md:py-8">
-        <AppHeader
-          fullName={fullName}
-          balance={balance}
-          profileImage={profile?.profile_image}
-        />
+        <AppHeader />
 
         <div className="mt-10">
           <div className="grid grid-cols-3 gap-5 md:grid-cols-6 lg:grid-cols-12">

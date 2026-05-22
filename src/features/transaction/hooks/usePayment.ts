@@ -1,5 +1,4 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { useHome } from "@/features/membership/hooks/useHome";
 import { useTransactionMutation } from "@/features/transaction/services/transaction.api"
 import { showConfirmPaymentModal, showStatusPayment } from "@/lib/swal";
 import { formatRupiah } from "@/lib/currency";
@@ -14,7 +13,6 @@ interface ServiceState {
 export function usePayment() {
   const navigate = useNavigate();
   const { state } = useLocation();
-  const { profile, balance, fullName } = useHome();
   const [transaction, { isLoading }] = useTransactionMutation();
 
   const service = state as ServiceState | null;
@@ -49,9 +47,6 @@ export function usePayment() {
   };
 
   return {
-    profile,
-    balance,
-    fullName,
     service,
     isLoading,
     handlePay,

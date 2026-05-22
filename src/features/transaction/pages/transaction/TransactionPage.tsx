@@ -2,20 +2,14 @@ import AppHeader from "@/components/common/AppHeader";
 import TransactionItem from "../../components/TransactionItem";
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
-import { useHome } from "@/features/membership/hooks/useHome";
 import { useTransaction } from "../../hooks/useTransaction";
 
 export default function TransactionPage() {
-  const { profile, balance, fullName } = useHome();
   const { LIMIT, allHistory, handleShowMore, hasMore, isFetching, isLoading } = useTransaction();
   
   return (
     <>
-      <AppHeader
-        fullName={fullName}
-        balance={balance}
-        profileImage={profile?.profile_image}
-      />
+      <AppHeader />
 
       <div className="mt-10">
         <h2 className="text-lg font-bold text-gray-900 mb-5">

@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { CreditCard } from "lucide-react";
 
 export default function PaymentPage() {
-  const { profile, balance, fullName, service, isLoading, handlePay, formatRupiah } = usePayment();
+  const { service, isLoading, handlePay, formatRupiah } = usePayment();
 
   if (!service) {
     return (
@@ -18,11 +18,7 @@ export default function PaymentPage() {
   return (
     <div className="min-h-screen bg-white">
       <div className="mx-auto max-w-6xl px-4 py-6 md:px-6 md:py-8">
-        <AppHeader
-          fullName={fullName}
-          balance={balance}
-          profileImage={profile?.profile_image}
-        />
+        <AppHeader/>
 
         <div className="mt-10">
           <p className="text-sm text-gray-500 mb-3">Pembayaran</p>

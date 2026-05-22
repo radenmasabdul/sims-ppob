@@ -1,5 +1,4 @@
 import AppHeader from "@/components/common/AppHeader";
-import { useHome } from "@/features/membership/hooks/useHome";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { CreditCard } from "lucide-react";
@@ -19,8 +18,6 @@ export default function TopupPage() {
     formatRupiah
   } = useTopup();
 
-  const { profile, balance, fullName } = useHome();
-
   const buttonProsesStyle = `h-12 text-base font-semibold bg-red-500 hover:bg-red-600 text-white cursor-pointer
     disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed`;
 
@@ -29,11 +26,7 @@ export default function TopupPage() {
 
   return (
     <>
-      <AppHeader
-        fullName={fullName}
-        balance={balance}
-        profileImage={profile?.profile_image}
-      />
+      <AppHeader />
 
       <main className="py-10">
         <div className="mb-8">

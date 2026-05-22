@@ -3,19 +3,15 @@ import { Eye, EyeOff } from "lucide-react";
 import Card from "@/components/common/Card";
 import foto from "@/assets/foto.png";
 import bgSaldo from "@/assets/bg-saldo.png";
+import { useHome } from "@/features/membership/hooks/useHome";
 
-type AppHeaderProps = {
-  fullName: string;
-  balance: number;
-  profileImage?: string;
-};
+export default function AppHeader() {
+  const {
+    profile,
+    balance,
+    fullName,
+  } = useHome();
 
-export default function AppHeader({
-  fullName,
-  balance,
-  profileImage,
-  
-}: AppHeaderProps) {
   const [showBalance, setShowBalance] = useState<boolean>(false);
   const formattedBalance = `Rp ${balance.toLocaleString("id-ID")}`;
 
@@ -24,7 +20,7 @@ export default function AppHeader({
       <div className="flex flex-1 flex-col items-center text-center lg:items-start lg:text-left">
         <div className="h-20 w-20 overflow-hidden rounded-full border-2 border-gray-100 shadow-sm md:h-24 md:w-24">
           <img
-            src={profileImage?.includes("/null") ? foto : profileImage || foto}
+            src={profile?.profile_image?.includes("/null") ? foto : profile?.profile_image || foto}
             alt="Avatar"
             className="h-full w-full object-cover"
           />

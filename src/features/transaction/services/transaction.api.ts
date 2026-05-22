@@ -28,6 +28,17 @@ interface HistoryResponse {
   created_on: string;
 }
 
+interface HistoryParams {
+  limit: number;
+  offset: number;
+}
+
+interface HistoryData {
+  offset: string;
+  limit: string;
+  records: HistoryResponse[];
+}
+
 export const transactionApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getBalance: builder.query<BaseResponse<BalanceResponse>, void>({
@@ -45,7 +56,10 @@ export const transactionApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["Balance", "Transaction"],
     }),
-    transaction: builder.mutation<BaseResponse<TransactionResponse>, TransactionPayload>({
+    transaction: builder.mutation<
+      BaseResponse<TransactionResponse>,
+      TransactionPayload
+    >({
       query: (body) => ({
         url: "/transaction",
         method: "POST",
@@ -53,12 +67,30 @@ export const transactionApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["Balance", "Transaction"],
     }),
-    getHistory: builder.query<BaseResponse<HistoryResponse[]>, void>({
-      query: () => ({
-        url: "/history",
+    getHistory: builder.query<BaseResponse<HistoryData>, HistoryParams>({
+      query: ({ offset, limit }) => ({
+        url: "/transaction/history",
         method: "GET",
+        params: { offset, limit },
       }),
-      providesTags: ["History"],
+      providesTags: ["Balance","Transaction", "History"],
+      serializeQueryArgs: ({ endpointName }) => endpointName,
+      merge: (currentCache, newData) => {
+        if (!newData.data) return;
+
+        if (!currentCache.data) {
+          currentCache.data = newData.data;
+          return;
+        }
+
+        currentCache.data.records = [
+          ...currentCache.data.records,
+          ...newData.data.records,
+        ];
+      },
+      forceRefetch({ currentArg, previousArg }) {
+        return currentArg?.offset !== previousArg?.offset;
+      },
     }),
   }),
 });

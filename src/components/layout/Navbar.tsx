@@ -1,15 +1,16 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/logo.png";
 
 const navLinks = [
   { label: "Top Up", href: "/topup" },
   { label: "Transaction", href: "/transaction" },
-  { label: "Akun", href: "#" },
+  { label: "Akun", href: "/akun" },
 ];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
 
   return (
     <nav className="w-full border-b border-gray-200 bg-white">
@@ -27,16 +28,24 @@ export default function Navbar() {
         </Link>
 
         <ul className="hidden items-center gap-8 md:flex">
-          {navLinks.map((link) => (
-            <li key={link.label}>
-              <Link
-                to={link.href}
-                className="text-sm font-medium text-gray-800 transition-colors duration-150 hover:text-red-500"
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = location.pathname === link.href;
+
+            return (
+              <li key={link.label}>
+                <Link
+                  to={link.href}
+                  className={`text-sm font-medium transition-colors duration-150 ${
+                    isActive
+                      ? "text-red-500"
+                      : "text-gray-800 hover:text-red-500"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
 
         <button
@@ -71,16 +80,24 @@ export default function Navbar() {
       {isOpen && (
         <div className="border-t border-gray-200 bg-white md:hidden">
           <ul className="flex flex-col px-6 py-4">
-            {navLinks.map((link) => (
-              <li key={link.label}>
-                <Link
-                  to={link.href}
-                  className="block py-3 text-sm font-medium text-gray-800 transition-colors duration-150 hover:text-red-500"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = location.pathname === link.href;
+
+              return (
+                <li key={link.label}>
+                  <Link
+                    to={link.href}
+                    className={`block py-3 text-sm font-medium transition-colors duration-150 ${
+                      isActive
+                        ? "text-red-500"
+                        : "text-gray-800 hover:text-red-500"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </div>
       )}

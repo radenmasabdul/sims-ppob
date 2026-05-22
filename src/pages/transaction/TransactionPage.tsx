@@ -1,0 +1,1 @@
+export { default } from "@/features/transaction/pages/transaction/TransactionPage";

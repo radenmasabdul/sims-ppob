@@ -3,6 +3,7 @@ import alertReducer from "@/stores/alert";
 import authReducer from "@/features/membership/stores/auth.store";
 import informationReducer from "@/features/information/stores/information.store";
 import transactionReducer from "@/features/transaction/stores/transaction.store";
+import profileReducer from "@/features/membership/stores/profile.store";
 import { baseApi } from "@/services/baseApi";
 
 export const store = configureStore({
@@ -11,6 +12,7 @@ export const store = configureStore({
     auth: authReducer,
     information: informationReducer,
     transaction: transactionReducer,
+    profile: profileReducer,
     [baseApi.reducerPath]: baseApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>

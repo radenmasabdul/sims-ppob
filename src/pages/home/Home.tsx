@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useHome } from "@/features/membership/hooks/useHome";
 
 export default function Home() {
-  const { profile, balance, banners, services, isLoading, fullName, SERVICE_BG_COLORS} = useHome();
+  const { profile, balance, banners, services, isLoading, fullName, SERVICE_BG_COLORS, handleServiceClick } = useHome();
   
   if (isLoading) {
     return (
@@ -30,6 +30,7 @@ export default function Home() {
             {services.map((service, i) => (
               <button
                 key={service.service_code}
+                onClick={() => handleServiceClick(service)}
                 className="group flex flex-col items-center gap-2 cursor-pointer"
               >
                 <div

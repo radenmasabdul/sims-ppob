@@ -6,6 +6,7 @@ import AppLayout from "@/components/layout/AppLayout";
 import Home from "@/pages/home/Home";
 import TopupPage from "@/pages/transaction/TopUpPage";
 import TransactionPage from "@/pages/transaction/TransactionPage";
+import PaymentPage from "@/pages/transaction/PaymentPage";
 import NotFound from "@/pages/NotFound";
 
 export default function AppRouter() {
@@ -19,6 +20,7 @@ export default function AppRouter() {
           <Route element={<AppLayout />}>
             <Route path="/home" element={<Home />} />
             <Route path="/topup" element={<TopupPage />} />
+            <Route path="/payment/:service_code" element={<PaymentPage />} />
             <Route path="/transaction" element={<TransactionPage />} />
           </Route>
         </Route>

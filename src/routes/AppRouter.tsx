@@ -4,6 +4,7 @@ import RegisterPage from "@/pages/membership/auth/RegisterPage";
 import ProtectedRoute from "./ProtectedRoute";
 import AppLayout from "@/components/layout/AppLayout";
 import Home from "@/pages/home/Home";
+import TopupPage from "@/pages/transaction/TopUpPage";
 import NotFound from "@/pages/NotFound";
 
 export default function AppRouter() {
@@ -16,6 +17,7 @@ export default function AppRouter() {
         <Route element={<ProtectedRoute />}>
           <Route element={<AppLayout />}>
             <Route path="/home" element={<Home />} />
+            <Route path="/topup" element={<TopupPage />} />
           </Route>
         </Route>
 

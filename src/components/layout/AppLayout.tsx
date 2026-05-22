@@ -6,8 +6,10 @@ export default function AppLayout() {
     <>
       <Navbar />
 
-      <div className="p-4 md:p-6">
-        <Outlet />
+      <div className="min-h-screen bg-white">
+        <div className="mx-auto max-w-6xl px-4 py-6 md:px-6 md:py-8">
+          <Outlet />
+        </div>
       </div>
     </>
   );

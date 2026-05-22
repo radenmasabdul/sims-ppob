@@ -1,8 +1,9 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import logo from "@/assets/logo.png";
 
 const navLinks = [
-  { label: "Top Up", href: "#" },
+  { label: "Top Up", href: "/topup" },
   { label: "Transaction", href: "#" },
   { label: "Akun", href: "#" },
 ];
@@ -13,7 +14,7 @@ export default function Navbar() {
   return (
     <nav className="w-full border-b border-gray-200 bg-white">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a href="/" className="flex items-center gap-2">
+        <Link to="/home" className="flex items-center gap-2">
           <img
             src={logo}
             alt="SIMS PPOB Logo"
@@ -23,17 +24,17 @@ export default function Navbar() {
           <span className="text-sm font-semibold tracking-wide text-gray-900">
             SIMS PPOB
           </span>
-        </a>
+        </Link>
 
         <ul className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => (
             <li key={link.label}>
-              <a
-                href={link.href}
+              <Link
+                to={link.href}
                 className="text-sm font-medium text-gray-800 transition-colors duration-150 hover:text-red-500"
               >
                 {link.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
@@ -72,12 +73,12 @@ export default function Navbar() {
           <ul className="flex flex-col px-6 py-4">
             {navLinks.map((link) => (
               <li key={link.label}>
-                <a
-                  href={link.href}
+                <Link
+                  to={link.href}
                   className="block py-3 text-sm font-medium text-gray-800 transition-colors duration-150 hover:text-red-500"
                 >
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
